@@ -1,0 +1,287 @@
+body {
+    background-color: #1f1f1f;
+}
+#section-main>.section>.first>.container_body {
+    background-color: transparent !important;
+}
+/*disable sticky*/
+
+.v2_sticky {
+    position: relative !important;
+}
+.sidebar_container.v2_sticky {
+    top: 0px !important;
+}
+/*Remove image based bgs / sides*/
+
+.container.first.last .container_header .left,
+.container.first .container_header .right {
+    background-image: none !important;
+}
+.container.first.last .container_body .container_right,
+.container .container_body .container_left {
+    background-color: transparent !important;
+}
+
+/*Set wall page background and border if you want, but for this I set to body color to appear transparent*/
+
+.v2_system_social,
+.v2_system_social.avatar_edit_window .upload_container,
+.v2_system_social.cover_edit_window .upload_container,
+.v2_system_social.photos_album_window .photos_upload_container,
+.v2_system_social.avatar_edit_window .upload_progress,
+.v2_system_social.avatar_edit_window .upload_save,
+.v2_system_social.cover_edit_window .upload_progress,
+.v2_system_social.cover_edit_window .upload_save {
+    background-color: #1f1f1f !important;
+}
+
+/*non-wall pages*/
+
+.v2_system_social .middle_inner .info,
+.v2_system_social .middle_inner .photos,
+.v2_system_social .middle_inner .communities,
+.v2_system_social .middle_inner .posts,
+.v2_system_social .middle_inner .characters,
+.v2_system_social .middle_inner .games,
+.v2_system_social .middle_inner .twitch {
+    background-color: #2b2a2b;
+    padding: 10px;
+}
+
+/************* Wall ***************/
+
+.v2_system_social .middle {
+    border-style: none !important;
+    border-radius: 0px !important;
+    margin-left: 0px !important;
+}
+
+.v2_system_social .middle {
+    background-color: transparent !important;
+}
+/*input for wall main*/
+
+.v2_system_social .share_main {
+    margin-bottom: 15px;
+    background-color: #2b2a2b;
+    padding: 10px;
+    box-shadow: 0px 0px 8px rgba(22, 22, 22, 0.05);
+}
+.v2_system_social .wall .share_closed {
+    margin-bottom: 0px !important;
+}
+/*Wall arrows*/
+/*set this to border style none if you don't use borders on containers, see wall borders*/
+
+.v2_system_social .menu_arrow,
+.v2_system_social .profile_menu .menu_popup_arrow,
+.v2_system_social.wall_emogif_window .emogif_categories {
+    border-style: none !important;
+}
+/*This should match the wall background, or border-style none if not using arrow*/
+
+.v2_system_social .menu_arrow_inner_bg,
+.v2_system_social .profile_menu .menu_popup_arrow_inner_bg {
+    border-right-color: #2b2a2b !important;
+    border-style: none !important;
+}
+/*If no arrow or wall background, remove the margins from write post*/
+
+.v2_system_social .wall .share_closed {
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+}
+
+/*Wall Post*/
+
+.v2_system_social .middle .wall .post {
+    width: 590px !important;
+    margin-bottom: 15px;
+    background-color: #2b2a2b !important;
+    box-shadow: 0px 0px 8px rgba(22, 22, 22, 0.05);
+}
+
+/*Wall comments*/
+/*Comment block*/
+
+.v2_system_social .wall .comments,
+.v2_system_social .widget_mc_character .mc_quote,
+.v2_system_social .characters .characters_data {
+    border-radius: 0px !important;
+    background-color: #1f1f1f;
+}
+/*Bottom border for each comment*/
+
+.v2_system_social .wall .comments_record {
+    background-color: #1f1f1f;
+    border-bottom: #1f1f1f;
+}
+/**************Widgets***************/
+
+.v2_system_social .sidebar_widget,
+.v2_system_social .profile_menu .menu_popup,
+.v2_system_social .widget_friends .friends_list .element_empty,
+.v2_system_social .widget_games .games_list .element_gamebox.empty,
+.v2_system_social .widget_communities .communities_list .communities_avatar_empty,
+.v2_system_social .widget_photos .photos_list .photos_empty,
+.v2_system_social .photos_temp_upload {
+    border-style: none !important;
+    border-radius: 0px !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.v2_system_social .sidebar_widget,
+.v2_system_social .profile_menu .menu_popup,
+.v2_system_social .wall .post_divider span,
+.v2_system_social .widget_communities .communities_list .communities_admin {
+    background-color: #2b2a2b !important;
+    border-style: none !important;
+    box-shadow: 0px 0px 8px rgba(22, 22, 22, 0.05);
+}
+.v2_system_social .middle_inner,
+.v2_system_social .sidebar_widget_inner,
+.v2_system_social .profile_menu .menu_popup_inner {
+    border-style: none !important;
+}
+/*Header*/
+
+.v2_system_social table.header {
+    position: relative;
+    height: 188px !important;
+    margin-bottom: 0px !important;
+}
+.v2_system_social table.header .cover_col {
+    height: 188px !important;
+    position: relative;
+    display: none;
+}
+.v2_system_social table.header .cover_col .cover {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 188px;
+    width: 100%;
+    max-width: none !important;
+    border-radius: 0px !important;
+    border-style: none !important;
+}
+.avatar_col {
+    height: 188px !important;
+    width: 360px !important;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(22, 22, 22, 0.4);
+    overflow: hidden;
+    display: none;
+}
+.blur_bg {
+    height: 188px !important;
+    width: 560px !important;
+    position: absolute;
+    background: rgba(16,17,18,0.5) !important;
+    z-index: 999;
+}
+.v2_system_social .avatar_col .avatar {
+    border-radius: 100% !important;
+    border-style: none !important;
+    width:125px !important;
+    height:125px !important;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    background-position: center center !important;
+    z-index: 9998;
+    margin-top: -72.5px;
+    margin-left: -150px;
+}
+.v2_system_social .avatar_col .avatar .avatar_insert img{
+ border-radius: 100% !important;
+ width:125px;
+ height:125px;
+}
+.avatar_edit{
+    position:absolute;
+}
+.v2_system_social .avatar_name {
+    z-index: 9998;
+    color: #e5fbe5;
+    position: absolute;
+    top: 69px;
+    margin-left: -20px;
+    text-align: center;
+    width: 200px;
+    left: 50%;
+}
+.v2_system_social .avatar_text {
+    text-shadow: none !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+}
+.avatar_friend_count {
+    margin-top: 20px;
+    font-size: 11px;
+}
+.cover_header_quote {
+    margin-bottom: 10px;
+}
+/*Menu*/
+
+.v2_system_social .profile_menu {
+    display: block;
+    width: 100%;
+    float: none !important;
+    text-align: center;
+    background-color: #2b2a2b;
+    margin-bottom: 15px;
+}
+.v2_system_social .profile_menu .menu_link {
+    display: inline-block !important;
+    margin-right: 40px;
+    height: inherit !important;
+    padding: 13px 0px 10px !important;
+    font-size: 14px;
+    color: #fff;
+    transition: border-color 0.218s ease 0s;
+    border-bottom: 3px solid transparent;
+    font-family: 'Arial', 'sans-serif';
+}
+.v2_system_social .profile_menu .menu_link:hover,
+.v2_system_social .profile_menu .menu_link:focus,
+.v2_system_social a.menu_link.menu_selected {
+    text-decoration: none;
+    transition: border-color 0.218s ease 0s;
+    border-color: #cf4f4f;
+    color: #cf4f4f;
+}
+.v2_system_social a.menu_link.menu_selected {
+    font-weight: bold !important;
+}
+.v2_system_social .profile_menu .menu_icon {
+    display: none !important;
+}
+.menu_arrow,
+.v2_system_social .menu_link[data-page="more"] {
+    display: none !important;
+}
+.v2_system_social table.header .cover_footer {
+    position: absolute !important;
+    bottom: 10px;
+    right: 10px;
+}
+
+.v2_system_social .wall .share_button span {
+  color: white;
+}
+
+p {
+  color: #fdfdfd;
+}
+
+.v2_system_social .wall .element_avatar img, .v2_system_social .wall .input-text, .v2_system_social .wall .input-text input, .v2_system_social .wall .input-textarea, .v2_system_social .wall .input-textarea textarea {
+  background-color: #1f1f1f;
+}
