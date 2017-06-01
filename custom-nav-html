@@ -1,0 +1,210 @@
+<div id="custom-nav">
+    <div class="custom-nav-wrapper">
+        <div class="left"><a class="brand" href="/home">Nasclub</a></div>
+        <div class="right"></div>
+        <ul>
+            <li class="expand-bottom">
+                <div class="menu-link">
+                    <a href="/home">Home</a>
+                </div>
+            </li>
+            <li class="expand-bottom">
+                <div class="menu-link">
+                    <a href="/forum">Forums</a>
+                </div>
+            </li>
+            <li class="expand-bottom">
+                <div class="menu-link">
+                    <a href="javascript:void(0)">Users<i class="material-icons">arrow_drop_down</i></a>
+                </div>
+                <div class="menu-dropdown">
+                    <div class="expand-circle"></div>
+                    <ul>
+                        <li>
+                            <div class="menu-link">
+                                <a href="/users">User List</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu-link">
+                                <a href="/stats">Statistics</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="expand-bottom">
+                <div class="menu-link">
+                    <a href="/store">Store</a>
+                </div>
+            </li>
+            <li class="expand-bottom">
+                <div class="menu-link">
+                    <a href="/support">Support</a>
+                </div>
+            </li>
+            <li class="expand-bottom">
+                <div class="menu-link expand-bottom">
+                    <a href="javascript:void(0)">More<i class="material-icons">arrow_drop_down</i></a>
+                </div>
+                <div class="menu-dropdown">
+                    <div class="expand-circle"></div>
+                    <ul>
+                        <li>
+                            <div class="menu-link">
+                                <a href="/wiki">Wiki</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu-link">
+                                <a href="/chat">Chat Room</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu-link">
+                                <a href="/rules">Rulebook</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    
+    var url = "/api/v1/api.php";
+
+    var user_info = {
+    	"jsonrpc": "2.0",
+    	"id": Math.round(Math.random() * (999999 - 100000) + 100000),
+    	"method": "User.get",
+    	"params": {}
+    };
+    
+    $.post(url, JSON.stringify(user_info), function(response) {
+    	if (response.error) {
+    		console.log(response.error.message);
+    	} else {
+    	    //console.log(response);
+    	    var loggedIn = response.result.logged_in;
+    	    var joinedSite = response.result.registered;
+    	    var myAvatar = (response.result.avatar_large).replace('large','avatar');
+    	    var myAdminFull = response.result.admin_access.full;
+    	    var myAdminLim = response.result.admin_access.limited;
+    	    
+    	    if (loggedIn == true) {
+    	        
+    	        if (joinedSite == false) {
+    	            $('#custom-nav .right').append('<div id="rules-popup-trigger" class="join-site expand-bottom"><a href="javascript:void(0)">Join Site</a></div>');
+    	        }
+    	        
+    	        if (myAdminFull == true || myAdminLim == true) {
+    	        
+        	        var siteAdmin = $('#enjin-bar .icon-cog').parents('a').attr('onmouseover').replace(/(Enjin_Core.dropdownMenu\(\[|\s\s|\s\[|\'|\[|\]|(,\s+\[\'\'(.+|\s+)+))/g, '');
+        	        var adminList = siteAdmin.split(',');
+        	        
+                    $('#custom-nav .right').append('<div class="admin-trigger"><a href="javascript:void(0)"><i class="material-icons">settings</i> Admin<i class="material-icons">arrow_drop_down</i></a></div>');
+                    $('#custom-nav .right .admin-trigger').append('<div class="menu-dropdown"><div class="expand-circle"></div><ul></ul></div>');
+                    $('#custom-nav .right .admin-trigger').click(function() {
+                        if ($(this).find('.menu-dropdown').is('.open')) {
+                            $(this).find('.menu-dropdown').removeClass('open');
+                        } else {
+                            $('#custom-nav .menu-dropdown, #custom-nav .right .profile-trigger .profile-window').removeClass('open');
+                            $(this).find('.menu-dropdown').addClass('open');
+                        }
+                    });
+                    
+                    for (i = 0; i < adminList.length; i = i + 2) {
+                        $('#custom-nav .right .admin-trigger .menu-dropdown ul').append('<li><div class="menu-link"><a href="' + adminList[i + 1] + '">' + adminList[i] + '</a></div></li>');
+                    }
+                    
+        	    }
+        	    
+        	    var profile_info = {
+                	"jsonrpc": "2.0",
+                	"id": Math.round(Math.random() * (999999 - 100000) + 100000),
+                	"method": "Profile.getProfile",
+                	"params": {}
+                };
+                
+                $.post(url, JSON.stringify(profile_info), function(response) {
+                    if (response.error) {
+                        console.log(response.error.message);
+                    } else {
+                        
+                        //console.log(response);
+                        var myCover = response.result.cover_image;
+                        
+                        $('#custom-nav .right').append('<div class="profile-trigger"><a href="javascript:void(0)"><img src="' + myAvatar + '" /></a><div class="profile-window"><div class="profile-window-wrapper"><div class="profile-content-wrapper"><div class="cover-wrapper"><div class="cover-image"><div class="profile-image-wrapper"><div class="profile-image"></div></div></div></div><div class="dashboard-wrapper"><div class="button-block"><div class="button-wrapper"><a href="/profile" class="button"><div>Profile</div></a></div></div><div class="button-block"><div class="button-wrapper"><a href="/dashboard" class="button"><div>Dashboard</div></a></div></div><div class="button-block"><div class="button-wrapper"><a href="/dashboard/messages" class="button"><div>Messages</div></a></div></div><div class="button-block"><div class="button-wrapper"><a href="/dashboard/applications" class="button"><div>Applications</div></a></div></div></div><div class="sites-wrapper"></div></div><div class="logout-wrapper"><a href="/logout" class="logout-button"><div>Logout</div></a></div></div></div></div>');
+                        $('#custom-nav .right .profile-window .cover-image').css({'background-image': 'url(' + myCover + ')'});
+                        $('#custom-nav .right .profile-window .cover-image .profile-image').css({'background-image': 'url(' + myAvatar + ')'});
+                        
+                        $('#custom-nav .right .profile-trigger > a').click(function() {
+                            if ($('#custom-nav .right .profile-trigger .profile-window').is('.open')) {
+                                $('#custom-nav .right .profile-trigger .profile-window').removeClass('open');
+                            } else {
+                                $('#custom-nav .menu-dropdown').removeClass('open');
+                                $('#custom-nav .right .profile-trigger .profile-window').addClass('open');
+                            }
+                        });
+                        
+                        
+                        var communities_info = {
+                        	"jsonrpc": "2.0",
+                        	"id": Math.round(Math.random() * (999999 - 100000) + 100000),
+                        	"method": "Profile.getCommunities",
+                        	"params": {}
+                        };
+                	    
+                	    $.post(url, JSON.stringify(communities_info), function(response) {
+                	        if (response.error) {
+                	            console.log(response.error.message);
+                	        } else {
+                	            //console.log(response);
+                	            $.each(response.result.items, function() {
+                	                var siteLogo = this.logo.replace(/(\<img src=\"|" width="43" height="43"\>)/g, '').replace('medium', 'large');
+                	                var siteName = this.name;
+                	                var siteDomain = this.domain;
+                	                if (this.access == 'Owner' || this.access == 'Admin') {
+                	                    $('#custom-nav .custom-nav-wrapper .right .profile-trigger .profile-window .profile-window-wrapper .profile-content-wrapper .sites-wrapper').append('<div class="site-block"><div class="site-wrapper"><img class="site-logo" src="' + siteLogo + '" /><div class="site-name-wrapper"><div><div class="site-name">' + siteName + '</div><div class="site-link-wrapper"><div class="site-link"><a href="' + siteDomain + '">Go To Site</a></div></div><div class="site-link-wrapper"><div class="site-link"><a href="' + siteDomain + '/admin">Admin</a></div></div></div></div></div></div>');
+                	                } else {
+                	                    $('#custom-nav .custom-nav-wrapper .right .profile-trigger .profile-window .profile-window-wrapper .profile-content-wrapper .sites-wrapper').append('<div class="site-block"><div class="site-wrapper"><img class="site-logo" src="' + siteLogo + '" /><div class="site-name-wrapper"><div><div class="site-name">' + siteName + '</div><div class="site-link-wrapper" style="width: 100%;"><div class="site-link"><a href="' + siteDomain + '">Go To Site</a></div></div></div></div></div></div>');
+                	                }
+                	            });
+                	        }
+                	    });
+                        
+                    }
+                });
+        	    
+    	    } else {
+    	        $('#custom-nav .right').append('<div class="login expand-bottom"><a href="/login">Login</a></div>')
+    	    }
+    	    
+    	    
+    	}
+    });
+    
+    $(document).ready(function() {
+        $('#custom-nav .menu-dropdown').parents('li').click(function() {
+            if ($(this).find('.menu-dropdown').is('.open')) {
+                $(this).find('.menu-dropdown').removeClass('open');
+            } else {
+                $('#custom-nav .menu-dropdown, #custom-nav .right .profile-trigger .profile-window').removeClass('open');
+                $(this).find('.menu-dropdown').addClass('open');
+            }
+        });
+        $('.body-wrap-2').click(function() {
+            $('#custom-nav .menu-dropdown, #custom-nav .right .profile-trigger .profile-window').removeClass('open');
+        });
+        $('#custom-nav').prependTo('body').fadeIn(500);
+    });
+</script>
