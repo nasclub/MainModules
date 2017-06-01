@@ -1,0 +1,31 @@
+.discord {
+    padding: 20px 15px;    
+}
+
+.discord .element_button {
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 40px;
+    color: #fafafa;
+}
+
+.element_button .l, .element_button .r, .element_smallbutton .l, .element_smallbutton .r, .element_bigbutton .l, .element_bigbutton .r {
+	background: none;
+}
+
+.element_button, .element_smallbutton, .element_bigbutton {
+	transition: 120ms all ease-in-out;
+	border-radius: 2px;
+	border: none;
+}
+
+.element_button {
+    height: 40px;
+}
+
+.element_smallbutton input, .element_smallbutton .button_block,.element_button input, .element_button .button_block,.element_bigbutton input, .element_bigbutton .button_block {
+	font-family: 'Montserrat', sans-serif;
+	line-height: 40px;
+}
