@@ -1,0 +1,19 @@
+    $(document).ready(function(){
+        var cover = $('.v2_system_social .cover_col .cover').css('background-image');
+        var friend_count = $('.friends_popup_button').html();
+        var views = $('.widget_ministats .cell:first-child h4').text();
+        var avatar = $('.v2_system_social .avatar_col .avatar').css('background-image').replace(/url\("([^"]+)"\)/g,'$1').replace(/url\(([^\)]+)\)/g,'$1');
+        console.log(avatar);
+        $('.v2_system_social .avatar_col .avatar').css('background-image','none');
+        $('.v2_system_social .avatar_col .avatar').append('<div class="avatar_insert"><img src="'+avatar+'"></div>');
+        $('.avatar_col').prepend('<div class="blur_bg">&nbsp</div>');
+        $('.blur_bg').css('background-image',cover);
+        $('.cover_header_name').appendTo($('.avatar_col')).removeClass('cover_header_name').addClass('avatar_name');
+        $('.cover_header_name_text').removeClass('cover_header_name_text').addClass('avatar_text');
+        $('<div class="avatar_friend_count"></div>').insertAfter($('.avatar_text'));
+        $('.avatar_friend_count').html(friend_count+' | '+views+' views');
+        $('.cover_header_quote').prependTo($('.cover_header .right'));
+        
+        $('.v2_system_social table.header .cover_col').show();
+        $('.v2_system_social table.header .avatar_col').show();
+    });
